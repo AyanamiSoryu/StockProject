@@ -65,6 +65,9 @@ const FilterAndProductList: React.FC = () => {
         setCurrentPage(1);
       } catch (error) {
         console.error('Error filtering products:', error);
+        const filteredIds = await filterProducts(filters);
+        setProductIds(filteredIds);
+        setCurrentPage(1);
       } finally {
         setLoading(false);
       }
