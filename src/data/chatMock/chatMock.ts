@@ -39,9 +39,9 @@ const trueChat: TrueChatSpec = [
   },
   {
     fieldName: 'feedback',
-    message:
+    message: 'Share your thoughts with us',
+    fallBackMessage:
       'Thanks for your feedback, we really appreciate it. We will contact you soon and until then have a nice day!',
-    fallBackMessage: 'Thank you for your message! We will answer you as fast as we can.',
     validation: /.+/
   }
 ];
