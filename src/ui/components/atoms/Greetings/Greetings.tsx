@@ -38,6 +38,10 @@ const GreetParagraph = styled.p`
   @media screen and (max-width: 790px) {
     font-size: 21px;
   }
+
+  @media screen and (max-width: 450px) {
+    font-size: 17px;
+  }
 `;
 
 const GreetingsComponent = () => {
