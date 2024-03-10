@@ -149,7 +149,8 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onFilterChange(filters);
+    const nonEmptyFilters = Object.fromEntries(Object.entries(filters).filter(([_, value]) => value !== ''));
+    onFilterChange(nonEmptyFilters);
   };
 
   return (
@@ -159,7 +160,12 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
         <StyledFilterLabels $isFiltersOn={isFiltersOn}>
           <label>
             Name
-            <input type='text' name='product' value={filters.product} onChange={handleChange} />
+            <input
+              type='text'
+              name='product'
+              value={typeof filters.product === 'string' ? filters.product : ''}
+              onChange={handleChange}
+            />
             {filters.product && (
               <StyledClearButton $isFiltersOn={isFiltersOn} onClick={() => handleClear('product')}>
                 ✕
@@ -170,7 +176,12 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
             <>
               <label>
                 Price
-                <input type='number' name='price' value={filters.price} onChange={handleChange} />
+                <input
+                  type='number'
+                  name='price'
+                  value={typeof filters.price === 'number' ? filters.price : ''}
+                  onChange={handleChange}
+                />
                 {typeof filters.price !== 'undefined' && typeof filters.price !== 'string' && (
                   <StyledClearButton
                     $isFiltersOn={isFiltersOn}
@@ -182,7 +193,12 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
               </label>
               <label>
                 Brand
-                <input type='text' name='brand' value={filters.brand} onChange={handleChange} />
+                <input
+                  type='text'
+                  name='brand'
+                  value={typeof filters.brand === 'string' ? filters.brand : ''}
+                  onChange={handleChange}
+                />
                 {filters.brand && (
                   <StyledClearButton $isFiltersOn={isFiltersOn} onClick={() => handleClear('brand')}>
                     ✕

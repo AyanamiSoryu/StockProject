@@ -22,16 +22,12 @@ const RootContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-interface MobileChatProps {
-  isActive: boolean;
-}
-
-const MobileChatContainer = styled.div<MobileChatProps>`
+const MobileChatContainer = styled.div<{ $isActive: boolean }>`
   width: 100%;
   position: absolute;
   display: flex;
   min-height: 600px;
-  transform: ${({ isActive }) => (isActive ? 'translate(0)' : 'translate(1000px)')};
+  transform: ${(props) => (props.$isActive ? 'translate(0)' : 'translate(1000px)')};
   transition: 500ms ease-out;
 `;
 
@@ -47,7 +43,7 @@ const FirstPage: React.FC = () => {
       <Greetings />
       {isMobile ? (
         <>
-          <MobileChatContainer isActive={isActive}>
+          <MobileChatContainer $isActive={isActive}>
             <ChatComponent spec={TrueChatMock.spec} onSubmit={TrueChatMock.onSubmit} title={TrueChatMock.title} />
           </MobileChatContainer>
           <ChatButton setState={setActive} />

@@ -68,22 +68,22 @@ const Title = styled.div`
   line-height: 121.429%;
 `;
 
-const MessageContainer = styled.div<{ isIncome: boolean }>`
+const MessageContainer = styled.div<{ $isIncome: boolean }>`
   overflow-wrap: break-word;
   position: relative;
-  align-self: ${({ isIncome }) => (isIncome ? 'flex-start' : 'flex-end')};
+  align-self: ${({ $isIncome }) => ($isIncome ? 'flex-start' : 'flex-end')};
   margin: 8px 24px;
   max-width: 50%;
   padding: 8px 14px;
   border-radius: 15px 15px 15px 12px;
-  background-color: ${({ isIncome }) => (isIncome ? '#F5F5F5' : '#121212')};
-  color: ${({ isIncome }) => (isIncome ? '#202020' : '#FFF')};
+  background-color: ${({ $isIncome }) => ($isIncome ? '#F5F5F5' : '#121212')};
+  color: ${({ $isIncome }) => ($isIncome ? '#202020' : '#FFF')};
 `;
 
-const TailContainer = styled.div<{ isIncome: boolean }>`
+const TailContainer = styled.div<{ $isIncome: boolean }>`
   position: absolute;
   bottom: -0.35rem;
-  ${({ isIncome }) => (isIncome ? 'right' : 'left')}: -0.3rem;
+  ${({ $isIncome }) => ($isIncome ? 'right' : 'left')}: -0.3rem;
 `;
 
 const InputAndButtonContainer = styled.div`
@@ -217,9 +217,9 @@ const ChatComponent: React.FC<ChatComponentProps> = (props: ChatComponentProps) 
             const { id, text, isIncome } = message;
             const Tail = isIncome ? TailBlack : TailWhite;
             return (
-              <MessageContainer key={id} isIncome={isIncome}>
+              <MessageContainer key={id} $isIncome={isIncome}>
                 {text}
-                <TailContainer isIncome={isIncome}>
+                <TailContainer $isIncome={isIncome}>
                   <Tail />
                 </TailContainer>
               </MessageContainer>
