@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import ButtonIcon from '../../../../data/imageMock/sendButtonIcon.svg';
-import TailBlack from '../../../../data/imageMock/TailWhite.svg';
-import TailWhite from '../../../../data/imageMock/TailBlack.svg';
+import TailBlack from '../../../../data/imageMock/TailBlack.svg';
+import TailWhite from '../../../../data/imageMock/TailWhite.svg';
 
 type ChatSpec = Array<{
   fieldName?: string;
@@ -76,8 +76,8 @@ const MessageContainer = styled.div<{ $isIncome: boolean }>`
   max-width: 50%;
   padding: 8px 14px;
   border-radius: 15px 15px 15px 12px;
-  background-color: ${({ $isIncome }) => ($isIncome ? '#F5F5F5' : '#4d4d4d')};
-  color: ${({ $isIncome }) => ($isIncome ? '#202020' : '#FFF')};
+  background-color: ${({ $isIncome }) => ($isIncome ? '#202020' : '#F5F5F5')};
+  color: ${({ $isIncome }) => ($isIncome ? '#FFFFFF' : '#202020')};
 `;
 
 const TailContainer = styled.div<{ $isIncome: boolean }>`
