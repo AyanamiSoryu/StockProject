@@ -26,7 +26,7 @@ const HelloHeading = styled.h2`
 `;
 
 const GreetParagraph = styled.p`
-  color: #bbb;
+  color: #828282;
   max-width: 724px;
   font-family: Inter, serif;
   font-size: 28px;
