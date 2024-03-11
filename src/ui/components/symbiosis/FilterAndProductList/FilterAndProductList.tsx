@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { filterProducts, getIds, getItems } from '../../../../utils/Api/Api';
@@ -19,6 +19,8 @@ const FilterAndProductList: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const rootRef = useRef(null);
 
   const fetchData = async (offset: number, limit: number) => {
     try {
@@ -50,6 +52,7 @@ const FilterAndProductList: React.FC = () => {
   };
 
   const handlePageChange = (pageNumber: number) => {
+    rootRef.current.scrollIntoView({ behavior: 'smooth' });
     setCurrentPage(pageNumber);
   };
 
@@ -89,7 +92,7 @@ const FilterAndProductList: React.FC = () => {
   }, [productIds]);
 
   return (
-    <RootContainer>
+    <RootContainer ref={rootRef}>
       <Filter onFilterChange={handleFilterChange} />
       {products.length === 0 || loading ? <Loader /> : null}
       {products.length === 0 ? null : <ProductList products={products} />}
